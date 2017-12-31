@@ -12,7 +12,15 @@ class SequelPro
             $this->addSite($site);
         }
         $this->addFooter();
-        $this->xml->asXML('/Users/YOUR_USER_ID/Library/Application Support/Sequel Pro/Data/Favorites.plist');
+//        $this->xml->asXML('/Users/biplob/Library/Application Support/Sequel Pro/Data/Favorites.plist');
+
+        //Format XML to save indented tree rather than one line
+        $dom = new DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($this->xml->asXML());
+        $filePath = '/Users/biplob/Library/Application Support/Sequel Pro/Data/Favorites.plist';
+        $dom->save($filePath);
     }
 
     public function addHeader()
@@ -35,58 +43,58 @@ class SequelPro
         $dict->addChild('string', '');
 
         $dict->addChild('key', 'host');
-        $dict->addChild('integer', $site->database->hostname);
+        $dict->addChild('string', $site->database->hostname);
 
         $dict->addChild('key', 'id');
-        $dict->addChild('string', -2490508938092353399);
+        $dict->addChild('integer', -2490508938092353399);
 
         $dict->addChild('key', 'name');
-        $dict->addChild('integer', $site->name);
+        $dict->addChild('string', $site->name);
 
         $dict->addChild('key', 'port');
         $dict->addChild('string', $site->database->port);
 
         $dict->addChild('key', 'socket');
-        $dict->addChild('integer', '');
+        $dict->addChild('string', '');
 
         $dict->addChild('key', 'sshHost');
         $dict->addChild('string', $site->hostname);
 
         $dict->addChild('key', 'sshKeyLocation');
-        $dict->addChild('integer', $site->keyfile);
+        $dict->addChild('string', $site->keyfile);
 
         $dict->addChild('key', 'sshKeyLocationEnabled');
-        $dict->addChild('string', 1);
+        $dict->addChild('integer', 1);
 
         $dict->addChild('key', 'sshPort');
-        $dict->addChild('integer', $site->port);
+        $dict->addChild('string', $site->port);
 
         $dict->addChild('key', 'sshUser');
         $dict->addChild('string', $site->username);
 
         $dict->addChild('key', 'sslCACertFileLocation');
-        $dict->addChild('integer', '');
+        $dict->addChild('string', '');
 
         $dict->addChild('key', 'sslCACertFileLocationEnabled');
-        $dict->addChild('string', 0);
+        $dict->addChild('integer', 0);
 
         $dict->addChild('key', 'sslCertificateFileLocation');
-        $dict->addChild('integer', '');
+        $dict->addChild('string', '');
 
         $dict->addChild('key', 'sslCertificateFileLocationEnabled');
-        $dict->addChild('string', 0);
+        $dict->addChild('integer', 0);
 
         $dict->addChild('key', 'sslKeyFileLocation');
-        $dict->addChild('integer', '');
+        $dict->addChild('string', '');
 
         $dict->addChild('key', 'sslKeyFileLocationEnabled');
-        $dict->addChild('string', 0);
+        $dict->addChild('integer', 0);
 
         $dict->addChild('key', 'type');
         $dict->addChild('integer', 2);
 
         $dict->addChild('key', 'useSSL');
-        $dict->addChild('string', 0);
+        $dict->addChild('integer', 0);
 
         $dict->addChild('key', 'user');
         $dict->addChild('string', $site->database->username);

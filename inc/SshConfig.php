@@ -4,11 +4,11 @@ class SshConfig
 {
     public function createConfigFile($sites)
     {
-        $data = "Host *
-        UseKeychain yes
-        IdentitiesOnly yes
-        TCPKeepAlive yes
-        \n";
+        $data = "Host *\n";
+        $data .= "    UseKeychain yes\n";
+        $data .= "    IdentitiesOnly yes\n";
+        $data .= "    TCPKeepAlive yes\n";
+        $data .= "    \n";
 
         foreach ($sites as $site) {
             $data .= "Host {$site->name}\n";
@@ -17,6 +17,6 @@ class SshConfig
             $data .= "    IdentityFile {$site->keyfile}\n";
             $data .= "\n";
         }
-        file_put_contents('/Users/YOUR_USER_ID/.ssh/config', $data);
+        file_put_contents('/Users/biplob/.ssh/config', $data);
     }
 }
