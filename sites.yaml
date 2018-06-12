@@ -1,0 +1,19 @@
+example1.com:
+  name: example1.com
+  host: 127.0.0.1
+  user: ex-user
+  sshKey: ~/.ssh/ex-user.pem
+  env: prod
+  database:
+    host: 127.0.0.1
+    user: root
+    password: root
+    port: 3306
+
+example2.com:
+  name: example2.com
+  host: 127.0.0.1
+  user: ex-user
+  sshKey: ~/.ssh/ex-user.pem
+  env: prod
+  database: { host: 127.0.0.1, user: root, password: root, port: 3306 }
