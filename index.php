@@ -7,7 +7,7 @@ use Biplob\SequelPro;
 use Biplob\FileZilla;
 use Biplob\PhpStorm;
 
-$sites = Yaml::parseFile('sites.yaml');
+$sites = Yaml::parseFile('hosts.yaml');
 
 // Create ssh config file
 $sc = new SshConfig();
